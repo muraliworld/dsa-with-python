@@ -3,15 +3,13 @@ from collections import defaultdict
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
-        n = len(s)
-        count = defaultdict(int)
-        for i in range(n):
-            count[s[i]] += 1
-            count[t[i]] -= 1
+       s_freq = {}
+       t_freq = {}
 
-        for k in count:
-            if count[k] != 0:
-                return False
-        return True
+       for char in s:
+           s_freq[char] = s_freq.get(char,0)+1
+
+       for char in t:
+           t_freq[char] = t_freq.get(char,0)+1
+
+       return s_freq == t_freq
